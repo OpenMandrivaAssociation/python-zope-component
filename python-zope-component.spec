@@ -1,6 +1,6 @@
 %define	module	zope.component
 %define name	python-zope-component
-%define version 3.12.1
+%define version 4.0.0
 %define	rel		1
 %if %mdkversion < 201100
 %define release %mkrel %{rel}
@@ -12,7 +12,7 @@ Summary:	Zope Component Architecture
 Name:	    %{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	http://pypi.python.org/packages/source/z/%{module}/%{module}-%{version}.zip
+Source0:	http://pypi.python.org/packages/source/z/%{module}/%{module}-%{version}.tar.gz
 License:	ZPL
 Group:		Development/Python
 Url:		http://pypi.python.org/pypi/zope.component/
