@@ -44,3 +44,14 @@ PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 %defattr(-,root,root)
 %doc *.txt
 %py_sitedir/zope*
+
+
+%changelog
+* Mon Jul 02 2012 Lev Givon <lev@mandriva.org> 4.0.0-1
++ Revision: 807787
+- Update to 4.0.0.
+
+* Wed Jun 20 2012 Lev Givon <lev@mandriva.org> 3.12.1-1
++ Revision: 806510
+- imported package python-zope-component
+
