@@ -15,7 +15,7 @@ Release:	%{release}
 Source0:	http://pypi.python.org/packages/source/z/%{module}/%{module}-%{version}.tar.gz
 License:	ZPL
 Group:		Development/Python
-Url:		http://pypi.python.org/pypi/zope.component/
+Url:		https://pypi.python.org/pypi/zope.component/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
 Requires:	python-zope-interface >= 3.8.0
