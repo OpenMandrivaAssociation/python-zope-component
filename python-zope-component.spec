@@ -1,26 +1,20 @@
-%define	module	zope.component
-%define name	python-zope-component
-%define version 4.0.0
-%define	rel		1
-%if %mdkversion < 201100
-%define release %mkrel %{rel}
-%else
-%define	release	%{rel}
-%endif
+%define	pypi_name	zope_component
 
+Name:	    python-zope-component
 Summary:	Zope Component Architecture
-Name:	    %{name}
-Version:	%{version}
-Release:	%{release}
-Source0:	http://pypi.python.org/packages/source/z/%{module}/%{module}-%{version}.tar.gz
-License:	ZPL
+Version:	7.0
+Release:	1
+License:	ZPL-2.1
 Group:		Development/Python
-Url:		https://pypi.python.org/pypi/zope.component/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildArch:	noarch
-Requires:	python-zope-interface >= 3.8.0
-Requires:	python-zope-event
-BuildRequires:	python-setuptools
+URL:		https://pypi.org/project/zope.component
+Source0:	https://files.pythonhosted.org/packages/source/z/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+BuildSystem:	python
+BuildArch:		noarch
+
+BuildRequires:	pkgconfig
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
 
 %description
 This package represents the core of the Zope Component
@@ -28,22 +22,16 @@ Architecture. Together with the 'zope.interface' package, it provides
 facilities for defining, registering and looking up components.
 
 %prep
-%setup -q -n %{module}-%{version}
+%autosetup -n %{pypi_name}-%{version} -p1
 
-%build
-%__python setup.py build
-
-%install
-%__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
-
-%clean
-%__rm -rf %{buildroot}
+# Remove bundled egg-info
+rm -rf src/zope.component.egg-info
 
 %files
-%defattr(-,root,root)
-%doc *.txt
-%py_sitedir/zope*
+%doc README.rst
+%license LICENSE.txt COPYRIGHT.txt
+%{python_sitelib}/zope
+%{python_sitelib}/%{pypi_name}-%{version}.dist-info
 
 
 %changelog
